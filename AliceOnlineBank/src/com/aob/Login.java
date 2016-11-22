@@ -42,7 +42,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
-		String memberFile = "E:\\Dev\\jeeWorkspace\\AliceOnlineBank\\WebContent\\database\\member.txt";
+		String memberFile = "E:\\Dev\\Git\\ComputerSecurityTermProject\\AliceOnlineBank\\WebContent\\database\\member.txt";
 		System.out.println("doPost-Login");
 		
 		String id = request.getParameter("id");

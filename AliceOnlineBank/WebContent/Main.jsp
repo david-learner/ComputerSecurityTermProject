@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 	
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,8 +15,8 @@
 		<form action="Login" method="post">
 			ID  : <input type="text" name="id" size="10"><br/>
 			PWD : <input type="password" name="pwd" size="10"><br/>
-			<input type="button" value="íšŒì›ê°€ìž…" onClick="location.href='Register.jsp';">
-			<input type="submit" value="ë¡œê·¸ì¸"><br/>	
+			<input type="button" value="È¸¿ø°¡ÀÔ" onClick="location.href='Register.jsp';">
+			<input type="submit" value="·Î±×ÀÎ"><br/>	
 		</form>
 	</div>
 </body>

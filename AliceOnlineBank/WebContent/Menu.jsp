@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 
 <%
 	String id = "";
@@ -11,7 +11,7 @@
 		}
 	} finally {
 	}
-	
+
 	/* String balance =  */
 %>
 
@@ -36,23 +36,30 @@
 	
 </script> -->
 <body>
-	<div align="center">Welcome	<%=id%><hr/></div>
 	<div align="center">
-		<form name="func" action="Menu" method="post">
-			
-			Deposit
-			<input type="text" name="deposit" size="10">
-			<input type="button" value="Submit" onclick="submit(1)"><br /><br /> 
-			
-			
-			Withdrawal
-			<input type="text" name="withdrawal" size="10">
-			<input type="button" value="Submit" onclick="submit(2)"><br /><br />
-			
-			<!-- <input type="hidden" name="submitType" id="submitType"/>  -->
-			<input type="submit" value="ì œì¶œ"><br/>	
-			Balance	: <input type="text" name="balance" size="10">
-			
+		Welcome
+		<%=id%><hr />
+	</div>
+	<div align="center">
+		<!-- <input type="hidden" name="submitType" id="submitType"/>   -->
+		<form id="func" action="Menu" method="post">
+			<div>
+				<div style="margin: 0 auto;">
+					deposit<input type="radio" name="select" value="deop" checked="checked"><input type="text" id="deposit" size="10"> 
+				</div>
+			</div>
+
+			<div>
+				<div>
+					Withdrawal<input type="radio" name="select" value="with"><input type="text" id="withdrawal" size="10">
+				</div>
+			</div>
+			<div>
+				<div>
+					Balance : <input type="text" id="balance" size="10">
+				</div>
+			</div>
+			<div><input type="submit" value="ÀÔ±Ý/ÀÎÃâ"></div>
 		</form>
 	</div>
 </body>

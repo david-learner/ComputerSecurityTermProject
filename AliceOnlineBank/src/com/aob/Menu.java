@@ -44,25 +44,25 @@ public class Menu extends HttpServlet {
 		//doGet(request, response);
 		
 		//String check = request.getParameter("submitType");
-		String check = "deposit";
+		String serviceType = request.getParameter("select");
 
 		System.out.println("doPost");
-		System.out.println(check);
+		System.out.println(serviceType);
 		String balance = null;
 		
-		if(check.equals("deposit")) //submitType이 deposit이면 money에 deposit 금액 담기.
-		{
-			String money = request.getParameter("deposit");
-			System.out.println(money);
-			balance = doDeposit(request, response, money);
-			request.setAttribute("balance", balance);
-			request.getRequestDispatcher("Menu.jsp").forward(request, response);
-		}else {
-			String money = request.getParameter("withdrawal");
-			balance = doWithdrawal(request, response, money);
-			request.setAttribute("balance", balance);
-			request.getRequestDispatcher("Menu.jsp").forward(request, response);
-		}
+//		if(check.equals("deposit")) //submitType이 deposit이면 money에 deposit 금액 담기.
+//		{
+//			String money = request.getParameter("deposit");
+//			System.out.println(money);
+//			balance = doDeposit(request, response, money);
+//			request.setAttribute("balance", balance);
+//			request.getRequestDispatcher("Menu.jsp").forward(request, response);
+//		}else {
+//			String money = request.getParameter("withdrawal");
+//			balance = doWithdrawal(request, response, money);
+//			request.setAttribute("balance", balance);
+//			request.getRequestDispatcher("Menu.jsp").forward(request, response);
+//		}
 		
 		
 		
