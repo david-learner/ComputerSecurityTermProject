@@ -20,6 +20,12 @@ import javax.servlet.http.HttpSession;
 public class Menu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	private String memberInfo = "E:\\Dev\\Git\\ComputerSecurityTermProject\\AliceOnlineBank\\WebContent\\database\\member.txt";
+	private String id = "";
+	private int money = 0;
+	List<String> members = new ArrayList<>(); 
+	
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -45,10 +51,18 @@ public class Menu extends HttpServlet {
 		
 		//String check = request.getParameter("submitType");
 		String serviceType = request.getParameter("select");
+		HttpSession session = request.getSession();
+		id = (String) session.getAttribute("id");
 
 		System.out.println("doPost");
 		System.out.println(serviceType);
-		String balance = null;
+//		String balance = null;
+		
+		if(serviceType.equals("depo")){
+			money = Integer.parseInt(request.getParameter("deposit"));
+			doDeposit2(id);
+		}
+		
 		
 //		if(check.equals("deposit")) //submitType이 deposit이면 money에 deposit 금액 담기.
 //		{
@@ -69,13 +83,44 @@ public class Menu extends HttpServlet {
 		
 	}
 	
+	
+	
+	/*	loadMemberInfo()
+	 * 	Load to member's information for doDeposit and doWithdrawal.
+	 */
+	protected void loadMemberInfo() throws IOException {
+		for(String line : Files.readAllLines(Paths.get(memberInfo))) {
+			for(String part : line.split("\\t+")) {
+				members.add(part);
+			}
+		}
+	}
+	
+	protected void doDeposit2(String id) {
+		int balance = 0;
+		int sum = 0;
+		
+		for(int i=1;i<members.size();i=i+5)
+		{
+			if(members.get(i).equals(id)){
+				balance = Integer.parseInt(members.get(i+3));
+				System.out.println("doDeposit2 balance :"+balance);
+				sum = balance + money;
+				members.set(i+3, Integer.toString(sum));
+				System.out.println("Sum is " + sum);
+				System.out.println("saveOK");
+				break;
+			}
+		}
+	}
+	
 	protected String doDeposit(HttpServletRequest request, HttpServletResponse response, String money) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		String memberFile = "E:\\Dev\\jeeWorkspace\\AliceOnlineBank\\WebContent\\database\\member.txt";
+		
 
 		List<String> members = new ArrayList<>();
-		for(String line : Files.readAllLines(Paths.get(memberFile))) {
+		for(String line : Files.readAllLines(Paths.get(memberInfo))) {
 			for(String part : line.split("\\t+")) {
 				members.add(part);
 			}
@@ -105,10 +150,10 @@ public class Menu extends HttpServlet {
 	protected String doWithdrawal(HttpServletRequest request, HttpServletResponse response, String money) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		String memberFile = "E:\\Dev\\jeeWorkspace\\AliceOnlineBank\\WebContent\\database\\member.txt";
+		String memberInfo = "E:\\Dev\\jeeWorkspace\\AliceOnlineBank\\WebContent\\database\\member.txt";
 
 		List<String> members = new ArrayList<>();
-		for(String line : Files.readAllLines(Paths.get(memberFile))) {
+		for(String line : Files.readAllLines(Paths.get(memberInfo))) {
 			for(String part : line.split("\\t+")) {
 				members.add(part);
 			}
